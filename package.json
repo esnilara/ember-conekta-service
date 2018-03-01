@@ -1,17 +1,25 @@
 {
   "name": "ember-conekta-service",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "An ember-cli addon which injects Conekta as an Ember service. (based on ember-stripe-service)",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "conekta",
+    "ember service",
+    "service",
+    "ember",
+    "gateway",
+    "payment gateway",
+    "conekta wrapper",
+    "wrapper"
   ],
   "license": "MIT",
-  "author": "",
+  "author": "esnilara <esnilara@esnilara.io>",
   "directories": {
     "doc": "doc",
     "test": "tests"
   },
-  "repository": "",
+  "repository": "https://github.com/esnilara/ember-conekta-service",
   "scripts": {
     "build": "ember build",
     "lint:js": "eslint ./*.js addon addon-test-support app config lib server test-support tests",
