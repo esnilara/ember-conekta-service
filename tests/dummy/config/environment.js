@@ -27,7 +27,7 @@ module.exports = function(environment) {
     publicKey: process.env.CONEKTA_PUBLIC_KEY || 'pk_thisIsATestKey'
   };
 
-  ENV.LOG_STRIPE_SERVICE = true;
+  ENV.LOG_CONEKTA_SERVICE = true;
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
