@@ -23,6 +23,12 @@ module.exports = function(environment) {
     }
   };
 
+  ENV.conekta = {
+    publicKey: process.env.CONEKTA_PUBLIC_KEY || 'pk_thisIsATestKey'
+  };
+
+  ENV.LOG_STRIPE_SERVICE = true;
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
@@ -41,6 +47,8 @@ module.exports = function(environment) {
 
     ENV.APP.rootElement = '#ember-testing';
     ENV.APP.autoboot = false;
+
+    ENV.conekta.mock = true;
   }
 
   if (environment === 'production') {
