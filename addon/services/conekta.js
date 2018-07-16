@@ -5,7 +5,6 @@ import Ember from 'ember';
 import Service from '@ember/service';
 import { get, set } from '@ember/object';
 import { readOnly } from '@ember/object/computed';
-import { registerWaiter } from '@ember/test';
 import { debug } from '@ember/debug';
 import { isEqual, typeOf } from '@ember/utils';
 
@@ -14,7 +13,6 @@ const { Logger } = Ember;
 export default Service.extend({
   didConfigure: false,
   config: null,
-  runCount: 0,
   lazyLoad: readOnly('config.lazyLoad'),
   language: readOnly('config.language'),
   mock: readOnly('config.mock'),
@@ -26,14 +24,6 @@ export default Service.extend({
 
     let lazyLoad = get(this, 'lazyLoad');
     let mock = get(this, 'mock');
-
-    if (Ember.testing)  {
-      this._waiter = () => {
-        return get(this, 'runCount') === 0;
-      };
-
-      registerWaiter(this._waiter);
-    }
 
     if (!lazyLoad || mock) {
       this.configure();
@@ -88,10 +78,7 @@ export default Service.extend({
   _createCardToken(card) {
     debug('card.createToken:', card);
 
-    this.incrementProperty('runCount');
-
     return this._conektaPromise((resolve, reject) => {
-      this.decrementProperty('runCount');
       return Conekta.Token.create(card, resolve, reject);
     });
   },
